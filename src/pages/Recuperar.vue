@@ -1,19 +1,24 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page class="flex flex-center bg-secondary">
     <div>
-      <q-card class="" style="width: 300px; height: 220px">
+      <q-card class="" style="width: 300px; height: 300px; color:blue">
         <q-card-section>
-          <div class="text-h6">Recuperar senha</div>
+          <div class="text-h6 row justify-left">
+            Recuperar senha
+          </div>
           <q-separator class="q-my-md" />
           <q-input
-            filled
+            outlined
+            rounded
             v-model="email"
             type="email"
             label="Digite seu email"
             class="q-mb-md"
           />
           <q-btn
-            color="primary"
+            outlined
+            rounded
+            color="accent"
             label="Recuperar senha"
             :disable="this.email"
             class="full-width q-mb-md"

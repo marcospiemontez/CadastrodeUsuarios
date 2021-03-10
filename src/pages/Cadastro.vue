@@ -1,20 +1,35 @@
 <template>
-  <q-page class="flex flex-center">
+    <q-page class="flex flex-center bg-secondary">
     <div>
-      <q-card class="" style="width: 300px; height: 300px">
+      <q-card class="" style="width: 300px; height: 300px; color:blue">
         <q-card-section>
-          <div class="text-h6">Cadastre-se</div>
+          <div class="text-h6 row full-width justify-between">
+            Cadastre-se
+            <q-btn
+              flat
+              icon-right="logout"
+              @click="$router.push({ name: 'login' })"
+            />
+          </div>
           <q-separator class="q-my-md" />
           <q-input
-            filled
+            rounded
+            outlined
             v-model="email"
             type="email"
             label="Crie um email"
-            class="q-mb-md"
-          />
+            class="q-mb-md">
+            <template v-slot:prepend>
+              <q-icon
+                color="accent"
+                name="email"
+              />
+            </template>
+          </q-input>
           <q-input
+            rounded
+            outlined
             v-model="senha"
-            filled
             label="Crie uma senha"
             :type="!isPwd ? 'password' : 'text'"
             :rules="[
@@ -29,9 +44,17 @@
                 @click="isPwd = !isPwd"
               />
             </template>
+            <template v-slot:prepend>
+              <q-icon
+                color="accent"
+                name="lock"
+              />
+            </template>
           </q-input>
           <q-btn
-            color="primary"
+            color="accent"
+            outline
+            rounded
             label="Criar"
             :disable="this.email && this.senha === ''"
             class="full-width q-mb-md"
@@ -61,13 +84,8 @@ export default {
   },
   methods: {
     criar () {
-      if (this.email === 'admin@admin.com' && this.senha === 'marcos') {
-        window.localStorage.setItem('email', this.email)
-        window.localStorage.setItem('senha', this.senha)
-        window.location.href = 'autenticado'
-      } else {
-        alert('Usuário não permitido')
-      }
+      window.localStorage.setItem('email', this.email)
+      window.localStorage.setItem('senha', this.senha)
     }
   }
 }

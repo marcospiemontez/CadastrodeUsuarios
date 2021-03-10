@@ -18,28 +18,31 @@
 
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel name="tabela" class="full-width">
-          <q-markup-table dark class="bg-indigo-8">
+          <q-markup-table dark class="bg-secondary">
             <thead>
               <tr>
                 <th class="text-left">Nome</th>
                 <th class="text-right">Email</th>
-                <th class="text-right">Sexo</th>
                 <th class="text-right">Idade</th>
                 <th class="text-right">CEP</th>
                 <th class="text-right">Excluir</th>
               </tr>
             </thead>
             <tbody>
-              <tr
-                v-for="(usuario, index) in usuarios"
-                :key="usuario"
-              >
+              <tr v-for="(usuario, index) in usuarios" :key="usuario">
                 <td class="text-left">{{ usuario.nome }}</td>
                 <td class="text-right">{{ usuario.email }}</td>
-                <td class="text-right">{{ usuario.sexo }}</td>
                 <td class="text-right">{{ usuario.idade }}</td>
                 <td class="text-right">{{ usuario.endereco.cep }}</td>
-                <td class="text-right"><q-btn round color="red" icon="clear"  @click="remove(index)"/></td>
+                <td class="text-right">
+                  <q-btn
+                    dense
+                    round
+                    color="red"
+                    icon="clear"
+                    @click="remove(index)"
+                  />
+                </td>
               </tr>
             </tbody>
           </q-markup-table>
@@ -47,7 +50,7 @@
 
         <q-tab-panel class="flex flex-center" name="dados">
           <q-card flat class="full-width">
-            <div class="flex flex-center text-h6 center">
+            <div class="flex flex-center text-h6 center" style="color:blue">
               Adicione os produtos
             </div>
             <q-card-section class="q-gutter-sm">
@@ -68,13 +71,6 @@
               <q-input
                 rounded
                 outlined
-                type="text"
-                v-model="user.sexo"
-                label="Sexo"
-              />
-              <q-input
-                rounded
-                outlined
                 type="number"
                 v-model="user.idade"
                 label="Idade"
@@ -88,7 +84,7 @@
               />
               <div class="q-pa-md q-gutter-sm flex flex-center">
                 <q-btn
-                  color="primary"
+                  color="accent"
                   label="Cadastrar"
                   class="full width q-mb-md"
                   @click="cadastrar"
@@ -102,13 +98,14 @@
   </div>
 </template>
 
-<style></style>
+<style>
+</style>
 
 <script>
 export default {
   data () {
     return {
-      tab: 'dados',
+      tab: 'tabela',
       user: {
         nome: '',
         email: '',

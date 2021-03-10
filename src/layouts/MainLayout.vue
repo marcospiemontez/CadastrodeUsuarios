@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header>
+    <q-header class="bg-secondary">
       <!--cabeçalho-->
       <!-- Barra -->
       <q-toolbar>
@@ -12,7 +12,7 @@
           icon="logout"
         />
         <q-toolbar-title> </q-toolbar-title>
-        <q-btn color="secondary" label="Entrar" />
+        <q-btn color="accent" label="Entrar" />
       </q-toolbar>
     </q-header>
     <q-page-container>

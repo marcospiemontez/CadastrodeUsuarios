@@ -1,6 +1,6 @@
-# Blog Teste Marcos
+# Quasar App (blog)
 
-Um sistema de aprendizado
+A Quasar Framework app
 
 ## Install the dependencies
 ```bash

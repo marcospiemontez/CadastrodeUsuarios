@@ -1,21 +1,28 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page class="flex flex-center bg-secondary">
     <div>
-      <q-card class="" style="width: 300px; height: 380px">
+      <q-card class="" style="width: 300px; height: 380px; color:blue">
         <q-card-section>
-
-          <div class="text-h6">Login</div>
+          <div class="text-h6 text-center">Login</div>
           <q-separator class="q-my-md" />
           <q-input
-            filled
+            outlined
+            rounded
             v-model="email"
             type="email"
             label="Email"
             class="q-mb-md"
-          />
+          >
+            <template v-slot:prepend>
+              <q-icon
+              color="accent"
+              name="email"/>
+            </template>
+          </q-input>
           <q-input
             v-model="senha"
-            filled
+            outlined
+            rounded
             label="Senha"
             :type="!isPwd ? 'password' : 'text'"
             :rules="[
@@ -30,9 +37,16 @@
                 @click="isPwd = !isPwd"
               />
             </template>
+            <template v-slot:prepend>
+              <q-icon
+              color="accent"
+              name="lock"/>
+            </template>
           </q-input>
           <q-btn
-            color="primary"
+            outlined
+            rounded
+            color="accent"
             label="Entrar"
             :disable="this.email && this.senha === ''"
             class="full-width q-mb-md"
@@ -59,9 +73,6 @@
 </template>
 
 <style>
-.border-black {
-  border: 1px solid black;
-}
 </style>
 
 <script>
@@ -76,9 +87,10 @@ export default {
   },
   methods: {
     login () {
-      if (this.email === 'admin@admin.com' && this.senha === 'marcos') {
-        window.localStorage.getItem('email', this.email)
-        window.localStorage.getItem('senha', this.senha)
+      if (
+        this.email === window.localStorage.getItem('email', this.email) &&
+        this.senha === window.localStorage.getItem('senha', this.senha)
+      ) {
         this.$router.push({ name: 'sistema' })
       } else {
         alert('Você não tem permissão para acessar essa area!')
