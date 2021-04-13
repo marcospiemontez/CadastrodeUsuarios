@@ -38,7 +38,7 @@
 
 <script>
 export default {
-  name: 'recuperado',
+  name: 'recuperadoo',
   data () {
     return {
       email: '',
